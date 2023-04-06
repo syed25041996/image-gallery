@@ -1,18 +1,20 @@
-<div class="login-page">
-    <h2>Login</h2>
-    <div class="form">
-      <form class="register-form">
-        <input type="text" placeholder="name"/>
-        <input type="password" placeholder="password"/>
-        <input type="text" placeholder="email address"/>
-        <button>create</button>
-        <p class="message">Already registered? <a href="#">Sign In</a></p>
-      </form>
-      <form class="login-form">
-        <input type="text" placeholder="username"/>
-        <input type="password" placeholder="password"/>
-        <button>login</button>
-        <p class="message">Not registered? <a href="#">Create an account</a></p>
-      </form>
-    </div>
-  </div>
+<form [formGroup]="loginForm" (ngSubmit)="saveLoginDetails(loginForm)">
+  <h2>Login</h2>
+  <label for="username">Username:</label>
+  <span *ngIf="username?.dirty && username?.touched && username?.invalid"
+    >Please enter your username</span
+  >
+  <input type="text" id="username" name="username" formControlName="username" />
+  <label for="password">Password:</label>
+  <span *ngIf="password?.dirty && password?.invalid && password?.touched"
+    >Please enter your password</span
+  >
+  <input
+    type="password"
+    id="password"
+    name="password"
+    formControlName="password"
+  />
+  <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+  <h6>Don't have an account ? <a routerLink="/register">Create one</a></h6>
+</form>
