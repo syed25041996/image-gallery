@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { supabase } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -35,5 +36,21 @@ export class RegisterComponent {
     return this.registerForm.get('email');
   }
 
-  saveRegisterDetails(data: any) {}
+  async saveRegisterDetails() {
+    const { data, error } = await supabase.auth.signUp({
+      email: this.email?.value,
+      password: this.password?.value,
+      options: {
+        data: {
+          username: this.username?.value,
+        },
+      },
+    });
+
+    if (data.user === null) {
+      console.log(error);
+    } else {
+      console.log(data);
+    }
+  }
 }

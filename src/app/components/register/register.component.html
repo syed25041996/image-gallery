@@ -1,17 +1,17 @@
-<form [formGroup]="registerForm" (ngSubmit)="saveRegisterDetails(registerForm)">
+<form [formGroup]="registerForm" (ngSubmit)="saveRegisterDetails()">
   <h2>Register</h2>
   <label for="username">Username:</label>
-  <span *ngIf="username?.dirty && username?.touched && username?.invalid"
+  <span *ngIf="(username?.dirty || username?.touched) && username?.invalid"
     >Please enter your username</span
   >
   <input type="text" id="username" name="username" formControlName="username" />
   <label for="email">Email:</label>
-  <span *ngIf="email?.dirty && email?.touched && email?.invalid"
+  <span *ngIf="(email?.dirty || email?.touched) && email?.invalid"
     >Please enter mail in correct format</span
   >
   <input type="email" id="email" name="email" formControlName="email" />
   <label for="password">Password:</label>
-  <span *ngIf="password?.dirty && password?.invalid && password?.touched"
+  <span *ngIf="(password?.dirty || password?.touched) && password?.invalid"
     >Please enter your password</span
   >
   <input

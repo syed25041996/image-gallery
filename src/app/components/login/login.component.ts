@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { supabase } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,16 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  saveLoginDetails(data: any) {
-   
+  async saveLoginDetails(datas: any) {
+    let { data, error } = await supabase.auth.signInWithPassword({
+      email: this.username?.value,
+      password: this.password?.value,
+    });
+
+    if (data.user === null) {
+      console.log(error);
+    } else {
+      console.log(data);
+    }
   }
 }
