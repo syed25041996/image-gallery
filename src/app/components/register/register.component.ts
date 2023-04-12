@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { supabase } from 'src/environments/environment';
 
 @Component({
@@ -13,7 +14,8 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authenticate: AuthenticationService
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -47,10 +49,11 @@ export class RegisterComponent {
       },
     });
 
-    if (data.user === null) {
-      console.log(error);
-    } else {
-      console.log(data);
+    if (error) {
+      console.log('Error: ', error);
     }
+    this.toastr.success('', 'Successfully registered')
+    this.router.navigate(['/login']);
+    return data;
   }
 }

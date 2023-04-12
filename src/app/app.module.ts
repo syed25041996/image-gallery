@@ -18,6 +18,8 @@ import { AddContactComponent } from './components/home/add-contact/add-contact.c
 import { ViewContactComponent } from './components/home/view-contact/view-contact.component';
 import { EditContactComponent } from './components/home/edit-contact/edit-contact.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

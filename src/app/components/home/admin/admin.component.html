@@ -1,13 +1,13 @@
 <section class="welcome">
-  <h1>Welcome LoggedInUser</h1>
+  <h1>Welcome {{loggedInUser}}</h1>
   <p>
     Want to create a new contact
-    <button class="btn btn-danger"><i class="fa-solid fa-plus"></i> New</button>
+    <button class="btn btn-danger" (click)="onAddContact()"><i class="fa-solid fa-plus"></i>New</button>
   </p>
   <p>Here are the list of contacts 📞</p>
   <div class="container">
     <div class="row">
-      <div class="col-md-4" *ngFor="let detail of details">
+      <div class="col-md-4" *ngFor="let contact of contactList">
         <div class="card">
           <div class="card-body">
             <img
@@ -18,19 +18,19 @@
               height="150"
             />
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Name: {{ detail.name }}</li>
-              <li class="list-group-item">Email: {{ detail.email }}</li>
-              <li class="list-group-item">Mobile: {{ detail.mobile }}</li>
+              <li class="list-group-item">Name: {{ contact.name }}</li>
+              <li class="list-group-item">Email: {{ contact.email }}</li>
+              <li class="list-group-item">Mobile: {{ contact.mobile }}</li>
             </ul>
           </div>
           <div class="btn-card">
-            <button class="btn btn-danger">
+            <button class="btn btn-danger" (click)="onDeleteContact(contact.id)">
               <i class="fa-solid fa-trash-can"></i>
             </button>
-            <button class="btn btn-warning">
+            <button class="btn btn-warning" routerLink="/home/view-contact/{{contact.id}}">
               <i class="fa-solid fa-eye"></i>
             </button>
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" routerLink="/home/edit-contact/{{contact.id}}">
               <i class="fa-solid fa-pen"></i>
             </button>
           </div>

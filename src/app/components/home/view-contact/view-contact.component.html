@@ -1,1 +1,18 @@
-<p>view-contact works!</p>
+<div class="row">
+  <div class="col-md-4">
+    <div class="col-md-4">
+      <img src="../../../../assets/avatar.png" alt="Contact Image" class="img-responsive" />
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="col-md-8">
+      <ul class="list-unstyled">
+        <li><strong>Name:</strong> {{contact.name}}</li>
+        <li><strong>Email:</strong> {{contact.email}}</li>
+        <li><strong>Phone:</strong> {{contact.mobile}}</li>
+        <li><strong>Company:</strong>{{contact.company}}</li>
+      </ul>
+    </div>
+  </div>
+  <button class="btn btn-danger" routerLink="/home/admin">Back</button>
+</div>

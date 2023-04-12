@@ -1,1 +1,74 @@
-<p>edit-contact works!</p>
+<section>
+    <form [formGroup]="contactForm" (ngSubmit)="onEditContact()">
+      <h2>Edit contact</h2>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter name"
+          name="name"
+          formControlName="name"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter email"
+          name="email"
+          formControlName="email"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="photo"
+          placeholder="Photo url"
+          name="photo"
+          formControlName="photo"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="mobile"
+          placeholder="Enter mobile"
+          name="mobile"
+          formControlName="mobile"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="company"
+          placeholder="Enter company"
+          name="company"
+          formControlName="company"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Enter title"
+          name="title"
+          formControlName="title"
+        />
+      </div>
+      <div class="form-group">
+        <select class="form-control">
+          <option value="">Select a Group</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary mx-2">Submit</button>
+      <button type="submit" class="btn btn-danger" routerLink="/home/admin">Cancel</button>
+    </form>
+    <img src="../../../../assets/avatar.png" alt="" />
+  </section>
+  

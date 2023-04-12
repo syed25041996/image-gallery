@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { supabase } from 'src/environments/environment';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authenticate: AuthenticationService
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -39,8 +41,13 @@ export class LoginComponent {
 
     if (data.user === null) {
       console.log(error);
+      this.toastr.error('','Invalid credentials')
     } else {
       console.log(data);
+      const username = this.username?.value.split('@')[0]
+      localStorage.setItem('username', username);
+      this.toastr.success('', 'Successfully logged in');
+      this.router.navigate(['/home/admin']);
     }
   }
 }
