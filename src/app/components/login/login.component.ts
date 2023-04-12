@@ -33,7 +33,7 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  async saveLoginDetails(datas: any) {
+  async saveLoginDetails() {
     let { data, error } = await supabase.auth.signInWithPassword({
       email: this.username?.value,
       password: this.password?.value,
